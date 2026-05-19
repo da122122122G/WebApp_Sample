@@ -12,6 +12,7 @@ public class Department
     public int? Id { get; private set; }      // 部署Id
     public string? Name { get; private set; } = string.Empty;    // 部署名
     private const int MaxLength = 20; // 部署名の長さ
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
@@ -24,11 +25,13 @@ public class Department
         Id = id;
         Name = name;
     }
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="name">部署名</param>
     public Department(string? name) : this(null, name) { }
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
