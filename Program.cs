@@ -1,9 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using WebApp_Sample.Presentations.Extensions;
+using WebApp_Sample.Presentations.Middlewares;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+// ControllerやViewの依存関係を構築する
 builder.Services.AddControllersWithViews();
 
+// アプリケーションの依存関係を構築する
+builder.Services.SettingDependencyInjection(builder.Configuration);
+
 var app = builder.Build();
+
+app.UseMiddleware<InternalExceptionLoggingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
